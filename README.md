@@ -47,6 +47,12 @@ A full-stack luxury real estate platform featuring property listings, investment
 - pip
 - npm or yarn
 
+### Quick Deploy to Railway
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/bassy1992/real)
+
+See [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md) for detailed deployment instructions.
+
 ### Backend Setup
 
 1. Navigate to the backend directory:
