@@ -8,4 +8,7 @@ cmds = ["pip install -r requirements.txt"]
 cmds = ["python manage.py collectstatic --noinput"]
 
 [start]
-cmd = "cd back && PYTHONPATH=/app/back python manage.py migrate && PYTHONPATH=/app/back gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT"
+cmd = "cd back && python manage.py migrate && gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT"
+
+[variables]
+LD_LIBRARY_PATH = "/nix/store/*-postgresql-*/lib:$LD_LIBRARY_PATH"
