@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'backend',
     'properties',
     'investment_opportunities',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -259,4 +260,5 @@ REST_FRAMEWORK = {
 }
 # Django Unfold settings removed - using standard Django admin instead
 
-
+# Custom User Model - using default Django User with UserProfile extension
+# AUTH_USER_MODEL = 'users.CustomUser'  # Commented out - using default User model
