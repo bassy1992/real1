@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["python39", "postgresql"]
+
+[phases.install]
+cmds = ["cd back && pip install -r requirements.txt"]
+
+[phases.build]
+cmds = ["cd back && python manage.py collectstatic --noinput"]
+
+[start]
+cmd = "cd back && python manage.py migrate && gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT"
