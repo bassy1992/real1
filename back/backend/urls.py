@@ -19,12 +19,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from backend.custom_admin import custom_admin_login
+from backend.reset_views import reset_admin_password
 
 # Import custom admin to apply CSRF exemption
 import backend.admin
 
 urlpatterns = [
     path('admin/login/', custom_admin_login, name='admin_login'),
+    path('admin/reset-password/', reset_admin_password, name='reset_admin_password'),
     path('admin/', admin.site.urls),
     path('api/', include('properties.urls')),
     path('api/investments/', include('investment_opportunities.urls')),
