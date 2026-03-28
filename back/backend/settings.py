@@ -28,12 +28,7 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-izl#^^hll=wyb(no8f6ow
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,real-production-4319.up.railway.app').split(',')
-
-# Add Railway domain if present
-RAILWAY_STATIC_URL = config('RAILWAY_STATIC_URL', default='')
-if RAILWAY_STATIC_URL:
-    ALLOWED_HOSTS.append(RAILWAY_STATIC_URL.replace('https://', '').replace('http://', ''))
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
 
 # Add custom domain if present
 CUSTOM_DOMAIN = config('CUSTOM_DOMAIN', default='')
@@ -207,7 +202,7 @@ CORS_ALLOW_CREDENTIALS = True
 # CSRF Trusted Origins
 CSRF_TRUSTED_ORIGINS = config(
     'CSRF_TRUSTED_ORIGINS',
-    default='https://real-production-4319.up.railway.app,https://bellrockholdings.org,https://www.bellrockholdings.org'
+    default='https://bellrockholdings.org,https://www.bellrockholdings.org'
 ).split(',')
 
 # CSRF Cookie Settings
