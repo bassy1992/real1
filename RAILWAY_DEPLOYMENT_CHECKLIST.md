@@ -25,7 +25,15 @@
 2. Click "New Project"
 3. Select "Deploy from GitHub repo"
 4. Choose: `bassy1992/real`
-5. Set **Root Directory**: `back`
+5. **CRITICAL**: After project is created, go to Service Settings:
+   - Click on your service
+   - Go to "Settings" tab
+   - Scroll to "Root Directory"
+   - Set it to: `back`
+   - Click "Save"
+6. Railway will now detect your Django app correctly
+
+**Why this is needed**: Your repository has both `front` and `back` folders. Railway needs to know to build from the `back` folder where your Django app lives.
 
 ### 2. Add PostgreSQL Database
 
