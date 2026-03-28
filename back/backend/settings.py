@@ -65,7 +65,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'backend.csrf_fix.CsrfFixMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -211,14 +211,14 @@ CSRF_TRUSTED_ORIGINS = config(
 ).split(',')
 
 # CSRF Cookie Settings
+CSRF_USE_SESSIONS = True  # Use sessions for CSRF tokens instead of cookies
 CSRF_COOKIE_SAMESITE = 'Lax'
-CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to read CSRF cookie
-CSRF_USE_SESSIONS = False  # Use cookie-based CSRF tokens
+CSRF_COOKIE_HTTPONLY = False
 CSRF_COOKIE_NAME = 'csrftoken'
 CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
-CSRF_COOKIE_DOMAIN = None  # Allow cookies on any domain
+CSRF_COOKIE_DOMAIN = None
 CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
-CSRF_COOKIE_SECURE = True if not DEBUG else False  # Secure in production
+CSRF_COOKIE_SECURE = True if not DEBUG else False
 
 # Security settings for production
 if not DEBUG:
