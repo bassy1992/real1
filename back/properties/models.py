@@ -34,6 +34,15 @@ class Property(models.Model):
     def __str__(self):
         return self.title
     
+    def delete(self, *args, **kwargs):
+        """
+        Override delete to ensure all related images are deleted from storage.
+        The CASCADE relationship will trigger PropertyImage deletion signals.
+        """
+        # The related PropertyImage objects will be deleted automatically due to CASCADE
+        # and their signals will handle the file deletion from DigitalOcean Spaces
+        super().delete(*args, **kwargs)
+    
     class Meta:
         verbose_name_plural = "Properties"
         ordering = ['-created_at']

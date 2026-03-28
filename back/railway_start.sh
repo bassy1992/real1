@@ -16,7 +16,17 @@ fi
 echo "LD_LIBRARY_PATH: $LD_LIBRARY_PATH"
 
 # Run migrations
-python manage.py migrate
+echo "Running database migrations..."
+python manage.py migrate --noinput
+
+# Collect static files
+echo "Collecting static files..."
+python manage.py collectstatic --noinput
+
+# Create superuser if environment variables are set
+echo "Checking for superuser creation..."
+python manage.py create_superuser
 
 # Start gunicorn
+echo "Starting Gunicorn server..."
 gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT
