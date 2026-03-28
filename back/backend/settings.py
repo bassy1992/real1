@@ -211,6 +211,11 @@ CSRF_TRUSTED_ORIGINS = config(
     default='https://real-production-4319.up.railway.app,https://bellrockholdings.org,https://www.bellrockholdings.org'
 ).split(',')
 
+# CSRF Cookie Settings
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to read CSRF cookie if needed
+CSRF_USE_SESSIONS = False  # Use cookie-based CSRF tokens
+
 # Security settings for production
 if not DEBUG:
     SECURE_SSL_REDIRECT = True
@@ -222,6 +227,14 @@ if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+else:
+    # Development settings
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+
+# Session settings
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_HTTPONLY = True
 
 # REST Framework settings
 REST_FRAMEWORK = {
