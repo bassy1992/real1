@@ -11,6 +11,7 @@ from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from backend.custom_admin import custom_admin_login
 from backend.admin_views import admin_dashboard, admin_logout
+from backend.property_views import properties_list, property_detail
 from backend.reset_views import reset_admin_password
 
 
@@ -27,6 +28,8 @@ urlpatterns = [
     path('admin/dashboard/', admin_dashboard, name='admin_dashboard'),
     path('admin/logout/', admin_logout, name='admin_logout'),
     path('admin/reset-password/', reset_admin_password, name='reset_admin_password'),
+    path('admin/properties/', properties_list, name='properties_list'),
+    path('admin/properties/<int:property_id>/', property_detail, name='property_detail'),
     path('admin/', admin_redirect, name='admin_redirect'),
     path('api/', include('properties.urls')),
     path('api/investments/', include('investment_opportunities.urls')),
@@ -34,6 +37,7 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 
 

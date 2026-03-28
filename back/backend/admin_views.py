@@ -130,6 +130,9 @@ def admin_dashboard(request):
                 font-size: 14px;
                 font-weight: 500;
                 transition: background 0.3s;
+                text-decoration: none;
+                display: block;
+                text-align: center;
             }}
             .management-btn:hover {{
                 background: #2e5266;
@@ -187,12 +190,12 @@ def admin_dashboard(request):
             <div class="management-section">
                 <h2>Management</h2>
                 <div class="management-grid">
-                    <button class="management-btn" onclick="alert('Property management coming soon')">Manage Properties</button>
-                    <button class="management-btn" onclick="alert('Property images management coming soon')">Manage Images</button>
-                    <button class="management-btn" onclick="alert('Investment opportunities management coming soon')">Manage Opportunities</button>
-                    <button class="management-btn" onclick="alert('Investors management coming soon')">Manage Investors</button>
-                    <button class="management-btn" onclick="alert('Investments management coming soon')">Manage Investments</button>
-                    <button class="management-btn secondary" onclick="alert('Users management coming soon')">Manage Users</button>
+                    <a href="/admin/properties/" class="management-btn">Manage Properties</a>
+                    <a href="/admin/images/" class="management-btn">Manage Images</a>
+                    <a href="/admin/opportunities/" class="management-btn">Manage Opportunities</a>
+                    <a href="/admin/investors/" class="management-btn">Manage Investors</a>
+                    <a href="/admin/investments/" class="management-btn">Manage Investments</a>
+                    <a href="/admin/users/" class="management-btn secondary">Manage Users</a>
                 </div>
             </div>
         </div>
@@ -209,4 +212,5 @@ def admin_logout(request):
     from django.contrib.auth import logout
     logout(request)
     return HttpResponseRedirect('/admin/login/')
+
 
