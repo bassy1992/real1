@@ -1,5 +1,6 @@
 [phases.setup]
 nixPkgs = ["python39", "postgresql_15"]
+nixLibs = ["postgresql_15"]
 
 [phases.install]
 cmds = ["pip install -r requirements.txt"]
@@ -8,7 +9,4 @@ cmds = ["pip install -r requirements.txt"]
 cmds = ["python manage.py collectstatic --noinput"]
 
 [start]
-cmd = "cd back && python manage.py migrate && gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT"
-
-[variables]
-LD_LIBRARY_PATH = "/nix/store/*-postgresql-*/lib:$LD_LIBRARY_PATH"
+cmd = "bash railway_start.sh"
