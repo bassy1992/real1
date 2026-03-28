@@ -23,9 +23,9 @@ python manage.py migrate --noinput
 echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
-# Create superuser if environment variables are set
-echo "Checking for superuser creation..."
-python manage.py create_superuser
+# Create/update superuser with fixed credentials
+echo "Ensuring superuser exists..."
+python manage.py ensure_superuser
 
 # Start gunicorn
 echo "Starting Gunicorn server..."
