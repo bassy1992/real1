@@ -1,1 +1,1 @@
-web: bash railway_start.sh
+web: python manage.py migrate && python manage.py collectstatic --noinput && python manage.py create_superuser && gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT
