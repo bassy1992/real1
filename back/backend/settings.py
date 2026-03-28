@@ -218,13 +218,12 @@ CSRF_COOKIE_NAME = 'csrftoken'
 CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
 CSRF_COOKIE_DOMAIN = None  # Allow cookies on any domain
 CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
-CSRF_COOKIE_SECURE = False  # Temporarily disable for debugging
+CSRF_COOKIE_SECURE = True if not DEBUG else False  # Secure in production
 
 # Security settings for production
 if not DEBUG:
     SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = False  # Temporarily disable for debugging
-    # CSRF_COOKIE_SECURE is set above
+    SESSION_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     X_FRAME_OPTIONS = 'DENY'
@@ -234,7 +233,6 @@ if not DEBUG:
 else:
     # Development settings
     SESSION_COOKIE_SECURE = False
-    CSRF_COOKIE_SECURE = False
 
 # Session settings
 SESSION_COOKIE_SAMESITE = 'Lax'
