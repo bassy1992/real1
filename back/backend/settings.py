@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'storages',
+    'backend',
     'properties',
     'investment_opportunities',
 ]
