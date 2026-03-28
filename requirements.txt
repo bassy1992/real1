@@ -1,0 +1,4 @@
+# This file helps Railway detect this is a Python project
+# Actual requirements are in back/requirements.txt
+
+-r back/requirements.txt
