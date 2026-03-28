@@ -8,10 +8,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from backend.debug_views import check_admin_user
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('debug/admin-user/', check_admin_user),
     path('api/', include('properties.urls')),
     path('api/investments/', include('investment_opportunities.urls')),
 ]
