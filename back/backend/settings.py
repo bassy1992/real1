@@ -205,6 +205,12 @@ if FRONTEND_URL and FRONTEND_URL not in CORS_ALLOWED_ORIGINS:
 # Allow credentials for CORS
 CORS_ALLOW_CREDENTIALS = True
 
+# CSRF Trusted Origins
+CSRF_TRUSTED_ORIGINS = config(
+    'CSRF_TRUSTED_ORIGINS',
+    default='https://real-production-4319.up.railway.app,https://bellrockholdings.org,https://www.bellrockholdings.org'
+).split(',')
+
 # Security settings for production
 if not DEBUG:
     SECURE_SSL_REDIRECT = True
