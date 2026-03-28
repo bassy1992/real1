@@ -44,9 +44,6 @@ if CUSTOM_DOMAIN:
 # Application definition
 
 INSTALLED_APPS = [
-    'unfold',
-    'unfold.contrib.filters',
-    'unfold.contrib.forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -260,104 +257,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ],
 }
-
-# Django Unfold settings
-UNFOLD = {
-    "SITE_TITLE": "BELLEROCK",
-    "SITE_HEADER": "BELLEROCK HOLDINGS",
-    "SITE_URL": "/",
-    "SITE_ICON": None,
-    "SITE_LOGO": None,
-    "SITE_SYMBOL": "domain",
-    "SHOW_HISTORY": True,
-    "SHOW_VIEW_ON_SITE": False,
-    "COLORS": {
-        "primary": {
-            "50": "255 251 235",
-            "100": "254 243 199",
-            "200": "253 230 138",
-            "300": "252 211 77",
-            "400": "251 191 36",
-            "500": "245 158 11",
-            "600": "217 119 6",
-            "700": "180 83 9",
-            "800": "146 64 14",
-            "900": "120 53 15",
-            "950": "69 26 3",
-        },
-    },
-    "SIDEBAR": {
-        "show_search": True,
-        "show_all_applications": False,
-        "navigation": [
-            {
-                "title": "Dashboard",
-                "items": [
-                    {
-                        "title": "Overview",
-                        "icon": "dashboard",
-                        "link": "/admin/",
-                    },
-                ],
-            },
-            {
-                "title": "Property Management",
-                "separator": True,
-                "collapsible": True,
-                "items": [
-                    {
-                        "title": "Properties",
-                        "icon": "villa",
-                        "link": "/admin/properties/property/",
-                    },
-                    {
-                        "title": "Property Images",
-                        "icon": "photo_camera",
-                        "link": "/admin/properties/propertyimage/",
-                    },
-                ],
-            },
-            {
-                "title": "Investment Management",
-                "separator": True,
-                "collapsible": True,
-                "items": [
-                    {
-                        "title": "Opportunities",
-                        "icon": "trending_up",
-                        "link": "/admin/investment_opportunities/investmentopportunity/",
-                    },
-                    {
-                        "title": "Investors",
-                        "icon": "account_balance_wallet",
-                        "link": "/admin/investment_opportunities/investor/",
-                    },
-                    {
-                        "title": "Investments",
-                        "icon": "paid",
-                        "link": "/admin/investment_opportunities/investment/",
-                    },
-                ],
-            },
-            {
-                "title": "System",
-                "separator": True,
-                "collapsible": True,
-                "items": [
-                    {
-                        "title": "Users",
-                        "icon": "person",
-                        "link": "/admin/auth/user/",
-                    },
-                    {
-                        "title": "Groups",
-                        "icon": "group",
-                        "link": "/admin/auth/group/",
-                    },
-                ],
-            },
-        ],
-    },
-}
+# Django Unfold settings removed - using standard Django admin instead
 
 
