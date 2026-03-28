@@ -18,15 +18,27 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.http import HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
 from backend.custom_admin import custom_admin_login
 from backend.reset_views import reset_admin_password
 
 # Import custom admin to apply CSRF exemption
 import backend.admin
 
+
+@csrf_exempt
+def admin_redirect(request):
+    """Redirect to login if not authenticated"""
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/admin/dashboard/')
+    return HttpResponseRedirect('/admin/login/')
+
+
 urlpatterns = [
     path('admin/login/', custom_admin_login, name='admin_login'),
     path('admin/reset-password/', reset_admin_password, name='reset_admin_password'),
+    path('admin/', admin_redirect, name='admin_redirect'),
     path('admin/', admin.site.urls),
     path('api/', include('properties.urls')),
     path('api/investments/', include('investment_opportunities.urls')),
@@ -34,3 +46,4 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
