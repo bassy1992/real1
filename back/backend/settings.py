@@ -18,20 +18,26 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load .env file manually
+from dotenv import load_dotenv
+env_file = BASE_DIR / '.env'
+if env_file.exists():
+    load_dotenv(env_file)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='django-insecure-izl#^^hll=wyb(no8f6owkwk4g0*vuq#1x#()f-egmpg=%s_bf')
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-izl#^^hll=wyb(no8f6owkwk4g0*vuq#1x#()f-egmpg=%s_bf')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 # Add custom domain if present
-CUSTOM_DOMAIN = config('CUSTOM_DOMAIN', default='')
+CUSTOM_DOMAIN = os.getenv('CUSTOM_DOMAIN', '')
 if CUSTOM_DOMAIN:
     ALLOWED_HOSTS.append(CUSTOM_DOMAIN)
 
@@ -91,9 +97,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # Use PostgreSQL in production (Railway), SQLite in development
-DATABASE_URL = config('DATABASE_URL', default=None)
+DATABASE_URL = os.getenv('DATABASE_URL', None)
 
-if DATABASE_URL:
+# Use SQLite if DATABASE_URL is not set or is empty
+if DATABASE_URL and DATABASE_URL.strip():
     DATABASES = {
         'default': dj_database_url.parse(DATABASE_URL)
     }
@@ -147,13 +154,13 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # DigitalOcean Spaces Configuration
-USE_SPACES = config('USE_SPACES', default=True, cast=bool)
-DO_SPACES_KEY = config('DO_SPACES_KEY', default='DO8014PDYEMPMGC8CMYR')
-DO_SPACES_SECRET = config('DO_SPACES_SECRET', default='MRio2V3xaCvUMJXWwGmzAjfJceHIggO1EH4ripqy5j8')
-DO_SPACES_BUCKET_NAME = config('DO_SPACES_BUCKET_NAME', default='lutheran')
-DO_SPACES_ENDPOINT_URL = config('DO_SPACES_ENDPOINT_URL', default='https://sfo3.digitaloceanspaces.com')
-DO_SPACES_REGION = config('DO_SPACES_REGION', default='sfo3')
-DO_SPACES_CDN_DOMAIN = config('DO_SPACES_CDN_DOMAIN', default='lutheran.sfo3.cdn.digitaloceanspaces.com')
+USE_SPACES = os.getenv('USE_SPACES', 'True').lower() in ('true', '1', 'yes')
+DO_SPACES_KEY = os.getenv('DO_SPACES_KEY', 'DO8014PDYEMPMGC8CMYR')
+DO_SPACES_SECRET = os.getenv('DO_SPACES_SECRET', 'MRio2V3xaCvUMJXWwGmzAjfJceHIggO1EH4ripqy5j8')
+DO_SPACES_BUCKET_NAME = os.getenv('DO_SPACES_BUCKET_NAME', 'lutheran')
+DO_SPACES_ENDPOINT_URL = os.getenv('DO_SPACES_ENDPOINT_URL', 'https://sfo3.digitaloceanspaces.com')
+DO_SPACES_REGION = os.getenv('DO_SPACES_REGION', 'sfo3')
+DO_SPACES_CDN_DOMAIN = os.getenv('DO_SPACES_CDN_DOMAIN', 'lutheran.sfo3.cdn.digitaloceanspaces.com')
 
 # Media files configuration
 if USE_SPACES:
@@ -186,13 +193,13 @@ else:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS settings
-CORS_ALLOWED_ORIGINS = config(
+CORS_ALLOWED_ORIGINS = os.getenv(
     'CORS_ALLOWED_ORIGINS',
-    default='http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173,https://bellrockholdings.org,https://www.bellrockholdings.org'
+    'http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173,https://bellrockholdings.org,https://www.bellrockholdings.org'
 ).split(',')
 
 # Add Railway frontend URL if present
-FRONTEND_URL = config('FRONTEND_URL', default='')
+FRONTEND_URL = os.getenv('FRONTEND_URL', '')
 if FRONTEND_URL and FRONTEND_URL not in CORS_ALLOWED_ORIGINS:
     CORS_ALLOWED_ORIGINS.append(FRONTEND_URL)
 
@@ -200,9 +207,9 @@ if FRONTEND_URL and FRONTEND_URL not in CORS_ALLOWED_ORIGINS:
 CORS_ALLOW_CREDENTIALS = True
 
 # CSRF Trusted Origins
-CSRF_TRUSTED_ORIGINS = config(
+CSRF_TRUSTED_ORIGINS = os.getenv(
     'CSRF_TRUSTED_ORIGINS',
-    default='https://bellrockholdings.org,https://www.bellrockholdings.org'
+    'https://bellrockholdings.org,https://www.bellrockholdings.org'
 ).split(',')
 
 # CSRF Cookie Settings
