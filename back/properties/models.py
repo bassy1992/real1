@@ -24,8 +24,8 @@ class Property(models.Model):
     baths = models.IntegerField()
     sqft = models.IntegerField()
     description = models.TextField()
-    amenities = models.JSONField(default=list)
-    images = models.JSONField(default=list)  # Keep for backward compatibility with URLs
+    amenities = models.JSONField(default=list, blank=True, null=True)
+    images = models.JSONField(default=list, blank=True, null=True)  # Keep for backward compatibility with URLs
     latitude = models.FloatField()
     longitude = models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True)
