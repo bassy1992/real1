@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
               <li>21 Sowutuom, Evans Kwao Street</li>
               <li>Accra, Ghana</li>
               <li>Post Address: GC-088-3111</li>
-              <li className="text-[#d4af37]">concierge@bellrock.com</li>
+              <li className="text-[#d4af37]">bellerockholdings@gmail.com</li>
             </ul>
           </div>
         </div>
