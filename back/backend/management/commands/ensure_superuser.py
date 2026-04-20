@@ -14,6 +14,11 @@ class Command(BaseCommand):
         email = os.getenv('DJANGO_SUPERUSER_EMAIL', 'admin@example.com')
         password = os.getenv('DJANGO_SUPERUSER_PASSWORD')
         
+        self.stdout.write(self.style.WARNING(f'🔍 Checking superuser setup...'))
+        self.stdout.write(self.style.WARNING(f'   Username from env: {username}'))
+        self.stdout.write(self.style.WARNING(f'   Email from env: {email}'))
+        self.stdout.write(self.style.WARNING(f'   Password set: {"Yes" if password else "No"}'))
+        
         if not password:
             self.stdout.write(self.style.ERROR('❌ DJANGO_SUPERUSER_PASSWORD environment variable is not set'))
             self.stdout.write(self.style.WARNING('   Set it in Railway Variables to create superuser'))
