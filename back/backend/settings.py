@@ -35,7 +35,12 @@ except ImportError:
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 if not SECRET_KEY:
-    raise ValueError("SECRET_KEY environment variable is not set")
+    # Only allow missing SECRET_KEY during collectstatic (build phase)
+    import sys
+    if 'collectstatic' not in sys.argv:
+        raise ValueError("SECRET_KEY environment variable is not set")
+    # Use a temporary key for collectstatic only
+    SECRET_KEY = 'temporary-key-for-collectstatic-only'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
