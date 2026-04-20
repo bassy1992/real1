@@ -6,8 +6,8 @@ cd back
 # Run migrations
 python manage.py migrate --noinput
 
-# Ensure superuser exists
-python manage.py ensure_superuser
+# Create admin user
+python manage.py create_admin
 
 # Fix admin permissions
 python manage.py fix_admin_perms
