@@ -18,11 +18,15 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Load .env file manually
-from dotenv import load_dotenv
-env_file = BASE_DIR / '.env'
-if env_file.exists():
-    load_dotenv(env_file)
+# Load .env file manually (only for local development)
+try:
+    from dotenv import load_dotenv
+    env_file = BASE_DIR / '.env'
+    if env_file.exists():
+        load_dotenv(env_file)
+except ImportError:
+    # dotenv not installed (production environment)
+    pass
 
 
 # Quick-start development settings - unsuitable for production

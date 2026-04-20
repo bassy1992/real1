@@ -3,7 +3,7 @@ nixPkgs = ["python39", "postgresql_15"]
 nixLibs = ["postgresql_15"]
 
 [phases.install]
-cmds = ["cd back && pip install -r requirements.txt"]
+cmds = ["pip install -r back/requirements.txt"]
 
 [phases.build]
 cmds = ["cd back && python manage.py collectstatic --noinput"]
