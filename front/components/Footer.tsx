@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
                 <div className="w-8 h-8 bg-[#d4af37] -rotate-45"></div>
               </div>
               <div className="flex flex-col">
-                <span className="text-2xl font-serif font-bold tracking-widest text-white leading-none">BELLEROCK</span>
+                <span className="text-2xl font-serif font-bold tracking-widest text-white leading-none">BELLROCK</span>
                 <span className="text-xs tracking-[0.4em] text-[#d4af37]">HOLDINGS LIMITED</span>
               </div>
             </div>
@@ -36,13 +36,13 @@ const Footer: React.FC = () => {
               <li>21 Sowutuom, Evans Kwao Street</li>
               <li>Accra, Ghana</li>
               <li>Post Address: GC-088-3111</li>
-              <li className="text-[#d4af37]">concierge@bellerock.com</li>
+              <li className="text-[#d4af37]">concierge@bellrock.com</li>
             </ul>
           </div>
         </div>
         
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] tracking-[0.2em] uppercase text-slate-500">
-          <p>© 2024 Bellerock Holdings Limited. All Rights Reserved.</p>
+          <p>© 2024 Bellrock Holdings Limited. All Rights Reserved.</p>
           <div className="flex gap-12">
             <a href="#" className="hover:text-white">Privacy Policy</a>
             <a href="#" className="hover:text-white">Terms of Service</a>

@@ -37,7 +37,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ onSuggest, properties }) => {
           </svg>
         </div>
         <div>
-          <h2 className="text-2xl font-serif text-white">Bellerock AI Concierge</h2>
+          <h2 className="text-2xl font-serif text-white">Bellrock AI Concierge</h2>
           <p className="text-slate-400 text-sm">Tell me your dream lifestyle, and I'll find the perfect match.</p>
         </div>
       </div>

@@ -8,7 +8,7 @@ export async function analyzePropertyQuery(query: string, properties: Property[]
   const response = await ai.models.generateContent({
     model: 'gemini-3-flash-preview',
     contents: `
-      Act as a luxury real estate consultant for Bellerock Holdings. 
+      Act as a luxury real estate consultant for Bellrock Holdings. 
       The user is asking: "${query}"
       
       Here is our current inventory:
@@ -46,7 +46,7 @@ export async function analyzePropertyQuery(query: string, properties: Property[]
 export async function generatePropertyDescription(property: Property) {
   const response = await ai.models.generateContent({
     model: 'gemini-3-flash-preview',
-    contents: `Write a poetic and high-end marketing description for this property: ${JSON.stringify(property)}. Focus on the lifestyle and exclusivity of Bellerock Holdings.`,
+    contents: `Write a poetic and high-end marketing description for this property: ${JSON.stringify(property)}. Focus on the lifestyle and exclusivity of Bellrock Holdings.`,
   });
   return response.text;
 }

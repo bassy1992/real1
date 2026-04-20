@@ -64,7 +64,7 @@ const Home: React.FC = () => {
           </div>
           
           <h1 className="text-7xl md:text-9xl font-serif text-white mb-6 tracking-tight leading-none">
-            BELLEROCK
+            BELLROCK
           </h1>
           <p className="text-2xl md:text-3xl text-[#d4af37] font-serif italic mb-8">
             Where Legacy Meets Luxury
@@ -123,7 +123,7 @@ const Home: React.FC = () => {
                 <span className="italic text-[#d4af37]">Luxury Living</span>
               </h2>
               <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                At Bellerock Holdings, we don't just sell properties—we curate lifestyles. 
+                At Bellrock Holdings, we don't just sell properties—we curate lifestyles. 
                 Each residence in our portfolio represents the pinnacle of architectural excellence, 
                 prime location, and timeless elegance.
               </p>

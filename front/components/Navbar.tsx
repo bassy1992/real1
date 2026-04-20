@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
             <div className="w-6 h-6 bg-[#d4af37] -rotate-45"></div>
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-serif font-bold tracking-widest text-white leading-none">BELLEROCK</span>
+            <span className="text-xl font-serif font-bold tracking-widest text-white leading-none">BELLROCK</span>
             <span className="text-[10px] tracking-[0.3em] text-[#d4af37]">HOLDINGS LIMITED</span>
           </div>
         </Link>
