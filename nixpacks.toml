@@ -3,10 +3,10 @@ nixPkgs = ["python39", "postgresql_15"]
 nixLibs = ["postgresql_15"]
 
 [phases.install]
-cmds = ["pip install -r requirements.txt"]
+cmds = ["cd back && pip install -r requirements.txt"]
 
 [phases.build]
-cmds = ["python manage.py collectstatic --noinput"]
+cmds = ["cd back && python manage.py collectstatic --noinput"]
 
 [start]
 cmd = "bash railway_start.sh"

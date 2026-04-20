@@ -29,7 +29,9 @@ if env_file.exists():
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-izl#^^hll=wyb(no8f6owkwk4g0*vuq#1x#()f-egmpg=%s_bf')
+SECRET_KEY = os.getenv('SECRET_KEY')
+if not SECRET_KEY:
+    raise ValueError("SECRET_KEY environment variable is not set")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
@@ -154,13 +156,13 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # DigitalOcean Spaces Configuration
-USE_SPACES = os.getenv('USE_SPACES', 'True').lower() in ('true', '1', 'yes')
-DO_SPACES_KEY = os.getenv('DO_SPACES_KEY', 'DO8014PDYEMPMGC8CMYR')
-DO_SPACES_SECRET = os.getenv('DO_SPACES_SECRET', 'MRio2V3xaCvUMJXWwGmzAjfJceHIggO1EH4ripqy5j8')
-DO_SPACES_BUCKET_NAME = os.getenv('DO_SPACES_BUCKET_NAME', 'lutheran')
+USE_SPACES = os.getenv('USE_SPACES', 'False').lower() in ('true', '1', 'yes')
+DO_SPACES_KEY = os.getenv('DO_SPACES_KEY', '')
+DO_SPACES_SECRET = os.getenv('DO_SPACES_SECRET', '')
+DO_SPACES_BUCKET_NAME = os.getenv('DO_SPACES_BUCKET_NAME', '')
 DO_SPACES_ENDPOINT_URL = os.getenv('DO_SPACES_ENDPOINT_URL', 'https://sfo3.digitaloceanspaces.com')
 DO_SPACES_REGION = os.getenv('DO_SPACES_REGION', 'sfo3')
-DO_SPACES_CDN_DOMAIN = os.getenv('DO_SPACES_CDN_DOMAIN', 'lutheran.sfo3.cdn.digitaloceanspaces.com')
+DO_SPACES_CDN_DOMAIN = os.getenv('DO_SPACES_CDN_DOMAIN', '')
 
 # Media files configuration
 if USE_SPACES:
