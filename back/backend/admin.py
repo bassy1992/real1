@@ -10,6 +10,12 @@ class CSRFExemptAdminSite(AdminSite):
         # Wrap the login view with csrf_exempt
         view = super().login
         return csrf_exempt(view)(request, extra_context)
+    
+    def has_permission(self, request):
+        """
+        Return True if the user is active and is a staff member.
+        """
+        return request.user.is_active and request.user.is_staff
 
 
 # Replace the default admin site
